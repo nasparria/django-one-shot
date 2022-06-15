@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+    <main>
+        <div>
+            <h1>{{todo.name}}</h1>
+        </div> <a href="{% url 'todo_list' %}">Return to all lists</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for task in todo_list_detail.items.all %}
+                <tr>
+                    <td> {{ task.task }} </td>
+                    <td> {{ task.due_date|date:"DATE_FORMAT" }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

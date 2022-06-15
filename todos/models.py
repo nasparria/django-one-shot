@@ -18,4 +18,4 @@ class TodoItem(models.Model):
     list = models.ForeignKey("TodoList", related_name="items", on_delete=models.CASCADE,)
 
     def __str__(self):
-        return f'{str(self.list.name)}: {self.task}'
+        return self.task
