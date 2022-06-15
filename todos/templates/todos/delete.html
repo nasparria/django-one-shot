@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delete To Do List</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1> Are you sure?</h1>
+        <form method="POST">
+          {% csrf_token %}
+          <p>Are you sure you want to delete "{{ todo_list_delete.name }}"?</p>
+          {{ form.as_p }}
+          <div>
+            <button class="button">Delete</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
