@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title> Create To Do Item </title>
+  </head>
+  <body>
+  
+    <main>
+      <div>
+        <div> <a href="{% url 'todo_list' %}">Return To All Lists</a> <br><br> </div>
+        <div>
+          <h1>Create A New Item </h1>
+          <form method="POST" name="name" type="text">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <div>
+              <button> Submit </button>
+            </div>
+          </div>
+    </main>
+  
+  </body>

@@ -1,6 +1,6 @@
 # from django.shortcuts import render
 from django.urls import reverse_lazy
-from todos.models import TodoList
+from todos.models import TodoList, TodoItem
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -44,3 +44,12 @@ class TodoListDeleteView(DeleteView):
     template_name = "todos/delete.html"
     context_object_name = "todo_list_delete"
     success_url = reverse_lazy("todo_list")
+
+
+class TodoItemCreateView(CreateView):
+    model = TodoItem
+    template_name = "todos/item.html"
+    fields = ["task", "due_date", "is_completed", "list"]
+
+    def get_success_url(self):
+        return reverse_lazy("todo_list_detail", kwargs={"pk":self.object.pk})

@@ -1,12 +1,13 @@
-from unicodedata import name
 from django.urls import path
+from todos.models import TodoList, TodoItem
 
 from todos.views import (
     TodoListView,
     TodoListDetailView,
     TodoListCreateView,
     TodoListUpdateView,
-    TodoListDeleteView
+    TodoListDeleteView,
+    TodoItemCreateView,
 
 )
 
@@ -16,5 +17,6 @@ urlpatterns = [
   path("create/", TodoListCreateView.as_view(), name="todo_list_create"),
   path("<int:pk>/edit/", TodoListUpdateView.as_view(), name="todo_list_edit"),
   path("<int:pk>/delete/", TodoListDeleteView.as_view(), name="todo_list_delete"),
+  path("items/create/", TodoItemCreateView.as_view(), name="todo_item_create"),
 
 ]
