@@ -4,8 +4,7 @@ from todos.models import TodoList
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
-
+from django.views.generic.edit import CreateView, UpdateView
 # Create your views here.
 
 
@@ -25,6 +24,15 @@ class TodoListDetailView(DetailView):
 class TodoListCreateView(CreateView):
     model = TodoList
     template_name = "todos/create.html"
+    fields = ["name"]
+
+    def get_success_url(self):
+        return reverse_lazy("todo_list_detail", kwargs={"pk":self.object.pk})
+
+
+class TodoListUpdateView(UpdateView):
+    model = TodoList
+    template_name = "todos/edit.html"
     fields = ["name"]
 
     def get_success_url(self):

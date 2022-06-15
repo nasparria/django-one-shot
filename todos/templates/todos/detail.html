@@ -8,6 +8,9 @@
         <div>
             <h1>{{todo.name}}</h1>
         </div> <a href="{% url 'todo_list' %}">Return to all lists</a>
+        <div>
+            <p><a href="{% url 'todo_list_edit' todo_list_detail.pk %}">Edit</a></p>
+        </div>
         <table>
             <thead>
                 <tr>
