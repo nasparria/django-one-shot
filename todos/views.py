@@ -53,3 +53,12 @@ class TodoItemCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy("todo_list_detail", kwargs={"pk":self.object.pk})
+
+
+class TodoItemUpdateView(UpdateView):
+    model = TodoItem
+    template_name = "todos/edititem.html"
+    fields = ["task", "due_date", "is_completed", "list"]
+
+    def get_success_url(self):
+        return reverse_lazy("todo_list_detail", kwargs={"pk": self.object.list.pk})
